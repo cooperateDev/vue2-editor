@@ -4,7 +4,12 @@
     <h1>Vue2Editor - Upload Images Example </h1>
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
-        <vue-editor id="editor1" @imageAdded="handleImageAdded" useCustomImageHandler v-model="editor1Content"></vue-editor>
+        <vue-editor
+          id="editor1"
+          :editorOptions="editorSettings"
+          v-model="editor1Content">
+        </vue-editor>
+          <!--  -->
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
       </div>
     </div>
@@ -14,13 +19,15 @@
 
 <script>
 
-const CLIENT_ID = '993793b1d8d3e2e'
-const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
-const UPLOAD_PRESET = 'ptvbj5nu'
 import {
-  VueEditor
+  VueEditor,
+  Quill
 } from '../src/index.js'
 import axios from 'axios'
+import { ImageDrop } from 'quill-image-drop-module'
+Quill.register('modules/imageDrop', ImageDrop)
+
+
 export default {
   components: {
     VueEditor,
@@ -33,6 +40,17 @@ export default {
       content: '<h1>Html For Editor</h1>',
       editor1IsDisabled: false,
       editor2IsDisabled: false,
+      editorSettings: {
+        modules: {
+          history: {
+            delay: 1000,
+            maxStack: 50,
+            userOnly: false
+          },
+          imageDrop: true
+          // imageResize: true
+        }
+      },
       customToolbar: [
         ['bold', 'italic', 'underline'],
         [{
