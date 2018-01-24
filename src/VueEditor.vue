@@ -8,7 +8,9 @@
 <script>
 import Quill from 'quill'
 import merge from 'lodash.merge'
-// import icons from './assets/icons'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+
 var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
   ['blockquote', 'code-block', 'image'],
@@ -45,12 +47,6 @@ export default {
       default: function () {
         return {};
       }
-    },
-    editorModules: {
-      type: Array,
-      default: function () {
-        return [];
-      }
     }
   },
 
@@ -59,9 +55,6 @@ export default {
       quill: null,
       editor: null,
       toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
-      modules: {
-          toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
-      }
     }
   },
 
@@ -97,19 +90,6 @@ export default {
         theme: 'snow',
         readOnly: this.disabled ? this.disabled : false,
       };
-
-      this.prepareEditorOptions(quillOptions)
-      this.quill = new Quill(this.$refs.quillContainer, quillOptions)
-
-      this.checkForCustomImageHandler()
-    },
-
-    setEditorElement() {
-      this.editor = document.querySelector(`#${this.id} .ql-editor`)
-    },
-
-    prepareEditorOptions(quillOptions) {
-
       if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
         if (this.editorOptions.modules && typeof this.editorOptions.modules.toolbar !== 'undefined') {
           // We don't want to merge default toolbar with provided toolbar.
@@ -117,6 +97,13 @@ export default {
         }
         merge(quillOptions, this.editorOptions);
       }
+      this.quill = new Quill(this.$refs.quillContainer, quillOptions)
+
+      this.checkForCustomImageHandler()
+    },
+
+    setEditorElement() {
+      this.editor = document.querySelector(`#${this.id} .ql-editor`)
     },
 
     checkForInitialContent() {
@@ -153,7 +140,52 @@ export default {
 }
 </script>
 
-<style src="quill/dist/quill.core.css"></style>
-<style src="quill/dist/quill.snow.css"></style>
-<style src="./assets/vue2-editor.css"></style>
-<!-- <style src="./assets/md-toolbar.css"></style> -->
+<style>
+  .ql-editor {
+    min-height: 200px;
+    font-size: 16px;
+  }
+
+  .ql-snow .ql-thin, .ql-snow .ql-stroke.ql-thin {
+      stroke-width: 1px !important;
+  }
+  .quillWrapper .ql-snow.ql-toolbar {
+      padding-top: 8px;
+      padding-bottom: 4px;
+  }
+
+  .quillWrapper .ql-snow.ql-toolbar button {
+    margin: 1px;
+  }
+
+  .quillWrapper .ql-snow.ql-toolbar .ql-formats {
+    margin-bottom: 10px;
+  }
+
+  .quillWrapper .ql-snow.ql-toolbar button svg, .ql-snow .ql-toolbar button svg {
+    width: 22px;
+    height: 22px;
+  }
+  .quillWrapper .ql-editor ul[data-checked=true] > li::before, .quillWrapper .ql-editor ul[data-checked=false] > li::before {
+    font-size: 1.35em;
+    vertical-align: baseline;
+    bottom: -0.065em;
+    font-weight: 900;
+    color: #222;
+  }
+  .quillWrapper  .ql-snow .ql-stroke {
+      stroke: rgba(63, 63, 63, 0.95);
+      stroke-linecap: square;
+      stroke-linejoin: initial;
+      stroke-width: 1.7px;
+  }
+  .quillWrapper .ql-picker-label {
+    font-size: 15px;
+  }
+  .quillWrapper .ql-snow .ql-active .ql-stroke {
+      stroke-width: 2.25px;
+  }
+  .quillWrapper .ql-toolbar.ql-snow .ql-formats {
+    vertical-align: top;
+  }
+</style>
