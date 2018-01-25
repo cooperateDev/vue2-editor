@@ -1,4 +1,4 @@
-# Vue2-Editor
+# Vue2Editor
 HTML Editor using Vue.js and Quilljs
 
 [Vue.js](https://vuejs.org)
@@ -344,10 +344,13 @@ Vue2Editor now uses Poi.js for development and building
 - `yarn lint`: Run eslint
 
 Check out your npm scripts, it's using [Poi](https://github.com/egoist/poi) under the hood.
+<<<<<<< HEAD
+=======
 
 <!-- # Achnoledgements
 Markdown: https://github.com/patleeman/quill-markdown-shortcuts -->
 
+>>>>>>> poi
 # License
 
 MIT
