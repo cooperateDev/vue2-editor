@@ -65,8 +65,8 @@ export default {
   },
 
   beforeDestroy() {
-    this.quill = null
-    delete this.quill
+    // this.quill = null
+    // delete this.quill
   },
 
   watch: {
@@ -87,6 +87,7 @@ export default {
       this.handleDynamicStyles()
       this.checkForInitialContent()
       this.checkForCustomImageHandler()
+
 
       this.quill.on('selection-change', range => {
         this.$emit('selection-change', range)
