@@ -8,14 +8,17 @@ export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
 
+  Vue.prototype.$add = (a, b) => {
+    return a + b;
+  };
+
   Vue.component("VueEditor", VueEditor);
 }
 
 const VPlugin = {
   install,
   version,
-  Quill,
-  VueEditor
+  Quill
 };
 
 // Auto-install when vue is found (eg. in browser via <script> tag)

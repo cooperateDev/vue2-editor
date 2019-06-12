@@ -20,8 +20,8 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'",
-      "posttag": "git push --follow-tags && npm publish"
+      "postbump": "yarn vue-cli-service build && git add dist && git commit -m 'chore: new build'",
+      "posttag": "git push --follow-tags && npm publish --tag alpha"
     },
     "types": [
       {
