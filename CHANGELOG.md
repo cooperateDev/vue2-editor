@@ -5,22 +5,14 @@ All notable changes to this project will be documented in this file. See [standa
 ### [2.8.1](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.1) (2019-06-12)
 
 
+## [2.8.0-alpha.9](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.0-alpha.9) (2019-06-12)
+
 ### Documentation
 
 * :pencil: moving examples to be imported ([6a49a96](https://github.com/davidroyer/vue2-editor/commit/6a49a96))
 * clean up `config.js` ([a02efbf](https://github.com/davidroyer/vue2-editor/commit/a02efbf))
 * fixes install command code ([3603060](https://github.com/davidroyer/vue2-editor/commit/3603060))
 * removes unused declarations ([60f1845](https://github.com/davidroyer/vue2-editor/commit/60f1845))
-
-
-
-### [2.7.2](https://github.com/davidroyer/vue2-editor/compare/v2.7.1...v2.7.2) (2019-05-26)
-
-
-
-### [2.7.1](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.21...v2.7.1) (2019-05-26)
-
-
 
 ## [2.8.0-alpha.8](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.7...v2.8.0-alpha.8) (2019-06-12)
 
